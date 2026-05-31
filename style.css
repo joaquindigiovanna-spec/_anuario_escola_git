@@ -1,0 +1,182 @@
+body{
+    margin:0;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:#1b1b1b;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    perspective:2000px;
+
+    overflow:hidden;
+}
+
+/* ESCENA */
+
+.scene{
+    width:180px;
+    height:180px;
+
+    position:relative;
+
+    transition:
+        all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* LIBRO GRANDE */
+
+.scene.expanded{
+    width:500px;
+    height:700px;
+}
+
+/* MOVER AL ABRIR */
+
+.scene.opened{
+    transform:translateX(220px);
+}
+
+/* LIBRO */
+
+.book{
+    width:100%;
+    height:100%;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    cursor:pointer;
+}
+
+/* TAPA */
+
+.cover{
+    width:100%;
+    height:100%;
+
+    background:#7b1f1f;
+
+    position:absolute;
+
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    transform-origin:left;
+
+    transition:transform 1s ease;
+
+    z-index:10;
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.4);
+
+    backface-visibility:hidden;
+}
+
+/* LIBRO ABIERTO */
+
+.cover.opened{
+    transform:rotateY(-135deg);
+}
+
+/* PAGINAS */
+
+.page{
+    width:100%;
+    height:100%;
+
+    position:absolute;
+
+    transform-style:preserve-3d;
+
+    transform-origin:left;
+
+    transition:
+        transform 1s ease,
+        z-index 0s 0.5s;
+}
+
+/* PAGINA PASADA */
+
+.page.flipped{
+    transform:rotateY(-180deg);
+
+    z-index:3 !important;
+}
+
+/* CARAS */
+
+.front,
+.back{
+    width:100%;
+    height:100%;
+
+    position:absolute;
+
+    background:#f5f0e8;
+
+    border-radius:10px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    backface-visibility:hidden;
+
+    box-shadow:0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* PARTE TRASERA */
+
+.back{
+    transform:rotateY(180deg);
+}
+
+/* ORDEN */
+
+.page1{
+    z-index:9;
+}
+
+.page2{
+    z-index:8;
+}
+
+/* BOTONES */
+
+.buttons{
+    margin-top:30px;
+
+    display:flex;
+    gap:15px;
+}
+
+button{
+    padding:12px 20px;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
